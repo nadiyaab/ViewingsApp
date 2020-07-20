@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace ViewingsApp
 {
@@ -20,9 +17,18 @@ namespace ViewingsApp
 
         public IConfiguration Configuration { get; }
 
+        public static readonly ILoggerFactory
+            LoggerFac = LoggerFactory.Create(builder => { builder.AddConsole(); });
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DatabaseContext>(options =>
+            {
+                options.UseLoggerFactory(LoggerFac);
+                options.UseSqlite("Data Source=viewing-app.db");
+            });
+            
             services.AddControllersWithViews();
         }
 
