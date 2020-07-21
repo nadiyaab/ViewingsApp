@@ -9,6 +9,6 @@ namespace ViewingsApp
         
         public DbSet<Agent> Agents { get; set; }
         public DbSet<Booking> Bookings { get; set; }
-        public DbSet<Client> Clients { get; set; }
+        public DbSet<Property> Properties { get; set; }
     }
 }

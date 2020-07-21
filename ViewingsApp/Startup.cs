@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ViewingsApp.Repos;
+using ViewingsApp.Services;
 
 namespace ViewingsApp
 {
@@ -30,6 +32,11 @@ namespace ViewingsApp
             });
             
             services.AddControllersWithViews();
+
+            services.AddTransient<IAgentsRepo, AgentsRepo>();
+            services.AddTransient<IBookingsRepo, BookingsRepo>();
+            services.AddTransient<IPropertiesRepo, PropertiesRepo>();
+            services.AddTransient<IBookingValidator, BookingValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
