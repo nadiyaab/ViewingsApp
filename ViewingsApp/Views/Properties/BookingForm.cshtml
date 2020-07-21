@@ -1,0 +1,45 @@
+﻿@model  ViewingsApp.Models.Request.BookingRequest
+
+@{
+    ViewData["Title"] = "Book a Viewing";
+}
+<h1 class="display-4">Book a Viewing</h1>
+
+<div class="row">
+    <form asp-controller="Properties" asp-action="SubmitBookingForm" method="post" class="form-group col-lg-6">
+
+        <input type="hidden" asp-for="PropertyId"/>
+        
+        <div class="form-group">
+            <label asp-for="AgentId">Agent</label>
+            <select asp-for="AgentId" asp-items="Model.AllAgents" class="form-control"></select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="StartsAt">Starting At</label>
+            <input type="datetime-local" asp-for="StartsAt" class="form-control" step="900"/>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="EndsAt">Ending At</label>
+            <input type="datetime-local" asp-for="EndsAt" class="form-control" step="900"/>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input type="text" asp-for="Name" class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="PhoneNumber">Phone Number</label>
+            <input type="text" asp-for="PhoneNumber" class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="EmailAddress">Email Address</label>
+            <input type="email" asp-for="EmailAddress" class="form-control">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Request Booking</button>
+    </form>
+</div>

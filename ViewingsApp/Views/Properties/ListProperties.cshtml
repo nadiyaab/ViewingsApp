@@ -1,4 +1,19 @@
-﻿@{
+﻿@model IEnumerable<ViewingsApp.Models.Database.Property>
+
+@{
     ViewData["Title"] = "Properties";
 }
 <h1 class="display-4">Properties</h1>
+<p class="text-dark">View our increadible properties.</p>
+
+<div class="row mt-4">
+    @foreach (var property in Model)
+    {
+        <div class="col-sm-6 col-md-4 card-property">
+            <img src="@property.ImageUrl" alt="picture of @property.Name" class="card-image">
+            <p class="h4 mb-0">@property.Name</p>
+            <p>@property.Postcode</p>
+            <a class="btn btn-primary" href="/properties/@property.Id/book-viewing">View this property</a>
+        </div>
+    }
+</div>

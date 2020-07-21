@@ -1,4 +1,17 @@
-﻿@{
+﻿@model IEnumerable<ViewingsApp.Models.Database.Agent>
+
+@{
     ViewData["Title"] = "Agents";
 }
 <h1 class="display-4">Agents</h1>
+<p class="text-dark">Meet our increadible agents.</p>
+
+<div class="row mt-4">
+    @foreach (var agent in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="h4 agent-name">@agent.Name</div>
+            <img src="@agent.ImageUrl" alt="profile picture of @agent.Name" class="agent-image">
+        </div>
+    }
+</div>

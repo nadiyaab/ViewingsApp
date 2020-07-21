@@ -1,0 +1,30 @@
+﻿@model ViewingsApp.Models.Database.Booking
+
+@{
+    ViewData["Title"] = "Booking Successful";
+}
+<h1 class="display-4">Booking Successful</h1>
+<h2>Thanks @Model.Name for making a booking request!</h2>
+
+<p>Here are the details of your booking:</p>
+<div class="row mt-4">
+    <div class="col-md-2"><strong>Property:</strong></div>
+    <div class="col-md-4">@Model.Property.Name</div>
+</div>
+
+<div class="row">
+    <div class="col-md-2"><strong>Postcode:</strong></div>
+    <div class="col-md-4">@Model.Property.Postcode</div>
+</div>
+
+<div class="row">
+    <div class="col-md-2"><strong>Agent:</strong></div>
+    <div class="col-md-4">@Model.Agent.Name</div>
+</div>
+
+<div class="row">
+    <div class="col-md-2"><strong>Time:</strong></div>
+    <div class="col-md-4">@Model.StartsAt</div>
+</div>
+
+<h3 class="mt-4">Looking forward to seeing you soon.</h3>

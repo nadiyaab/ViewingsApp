@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using ViewingsApp.Models.Database;
 using ViewingsApp.Models.Request;
 
@@ -33,7 +34,16 @@ namespace ViewingsApp.Repos
                 }
             );
 
-            return bookingEntity.Entity;
+            _context.SaveChanges();
+            return GetBooking(bookingEntity.Entity.Id);
+        }
+
+        private Booking GetBooking(int id)
+        {
+            return _context.Bookings
+                .Include(booking => booking.Agent)
+                .Include(booking => booking.Property)
+                .Single(booking => booking.Id == id);
         }
     }
 }

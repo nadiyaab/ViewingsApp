@@ -11,6 +11,7 @@ namespace ViewingsApp.Models.Database
         public int Id { get; set; }
         
         public string Name { get; set; }
+        public string ImageUrl { get; set; }
         public IEnumerable<Booking> Bookings { get; set; }
         public int StartTime { get; set; }
         public int EndTime { get; set; }
