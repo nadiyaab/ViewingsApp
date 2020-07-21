@@ -17,7 +17,7 @@ namespace ViewingsApp.Services
             return new BookingValidation
             {
                 IsValid = true,
-                ErrorMessage = null
+                ErrorMessage = ""
             };
         }
     }
