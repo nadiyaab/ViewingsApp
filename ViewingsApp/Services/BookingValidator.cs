@@ -23,6 +23,7 @@ namespace ViewingsApp.Services
             // check that the agent doesn't have a booking that clashes.
             // check that the property doesn't have a booking that clashes.
             // respect the start and end times of the agent
+            // no bookings on wednesdays please! 
             // check that the agent has enough time to get between the properties.
             // agent starts & ends each day from the office in kentish town (
             // don't allow small gaps between viewings
