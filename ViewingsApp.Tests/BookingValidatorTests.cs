@@ -38,6 +38,7 @@ namespace ViewingsApp.Tests
         [Test]
         public void ValidBookingPassesValidation()
         {
+            // Arrange
             var bookingRequest = new BookingRequest
             {
                 AgentId  = 1,
@@ -50,10 +51,36 @@ namespace ViewingsApp.Tests
             };
             var bookingValidator = new BookingValidator();
 
+            // Act
             var bookingValidation = bookingValidator.ValidateBooking(bookingRequest, _agents, _properties);
 
+            // Assert
             bookingValidation.IsValid.Should().BeTrue();
             bookingValidation.ErrorMessage.Should().BeEmpty();
+        }
+
+        [Test]
+        public void ShouldFailIfNameIsMissing()
+        {
+            // Arrange
+            var bookingRequest = new BookingRequest
+            {
+                AgentId  = 1,
+                PropertyId = 3,
+                Name = "",
+                EmailAddress = "rebecca@hotmail.com",
+                StartsAt = DateTime.Now.AddHours(2),
+                EndsAt = DateTime.Now.AddHours(3),
+                PhoneNumber = "0300 547 873"
+            };
+            var bookingValidator = new BookingValidator();
+
+            // Act
+            var bookingValidation = bookingValidator.ValidateBooking(bookingRequest, _agents, _properties);
+
+            // Assert
+            bookingValidation.IsValid.Should().BeFalse();
+            bookingValidation.ErrorMessage.Should().Be("You must provide a name");
         }
     }
 }
