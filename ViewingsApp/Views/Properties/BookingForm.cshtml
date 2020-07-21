@@ -10,6 +10,8 @@
 
         <input type="hidden" asp-for="PropertyId"/>
         
+        <div asp-validation-summary="All" class="text-danger"></div>
+        
         <div class="form-group">
             <label asp-for="AgentId">Agent</label>
             <select asp-for="AgentId" asp-items="Model.AllAgents" class="form-control"></select>
